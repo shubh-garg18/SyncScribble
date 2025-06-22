@@ -89,7 +89,7 @@ const MousesRenderer = () => {
       </AnimatePresence>
 
       {/* User cursors with enhanced animations */}
-      <AnimatePresence mode="popLayout">
+      <AnimatePresence>
         {otherUsers.map((userId, index) => {
           const user = users.get(userId);
           

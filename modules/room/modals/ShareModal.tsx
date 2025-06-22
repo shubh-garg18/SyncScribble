@@ -31,7 +31,7 @@ const ShareModal = () => {
     }
   };
 
-  const handleShare = (platform) => {
+  const handleShare = (platform: 'whatsapp' | 'twitter' | 'facebook' | 'email') => {
     const shareText = `Join me on this collaborative drawing canvas! Room ID: ${id}`;
     const encodedUrl = encodeURIComponent(url);
     const encodedText = encodeURIComponent(shareText);
@@ -46,7 +46,17 @@ const ShareModal = () => {
     window.open(shareUrls[platform], '_blank', 'width=600,height=400');
   };
 
-  const ShareButton = ({ icon, label, onClick, color = "bg-gray-100 hover:bg-gray-200" }) => (
+  const ShareButton = ({ 
+    icon, 
+    label, 
+    onClick, 
+    color = "bg-gray-100 hover:bg-gray-200" 
+  }: {
+    icon: React.ReactNode;
+    label: string;
+    onClick: () => void;
+    color?: string;
+  }) => (
     <button
       onClick={onClick}
       className={`flex items-center gap-3 p-3 rounded-xl transition-all duration-200 hover:scale-105 ${color} group`}
@@ -90,7 +100,7 @@ const ShareModal = () => {
             alt="QR Code" 
             className="w-12 h-12 rounded border border-gray-200"
             onError={(e) => {
-              e.target.style.display = 'none';
+              (e.target as HTMLImageElement).style.display = 'none';
             }}
           />
         </div>
@@ -169,7 +179,10 @@ const ShareModal = () => {
             alt="QR Code for sharing" 
             className="w-24 h-24 rounded"
             onError={(e) => {
-              e.target.parentElement.innerHTML = '<div class="w-24 h-24 bg-gray-100 rounded flex items-center justify-center text-gray-400 text-xs">QR Code</div>';
+              const target = e.target as HTMLImageElement;
+              if (target.parentElement) {
+                target.parentElement.innerHTML = '<div class="w-24 h-24 bg-gray-100 rounded flex items-center justify-center text-gray-400 text-xs">QR Code</div>';
+              }
             }}
           />
         </div>

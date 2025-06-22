@@ -160,9 +160,9 @@ const MoveImage = () => {
 
       {/* Enhanced Image Container */}
       <motion.div
-        className="relative overflow-hidden rounded-xl shadow-2xl ring-4 ring-white/50 backdrop-blur-sm"
+        className="relative overflow-hidden rounded-xl shadow-2xl ring-4 ring-white/50 backdrop-blur-sm hover:ring-8 hover:ring-blue-400/30 transition-all duration-300"
         whileHover={{
-          ring: "ring-8 ring-blue-400/30",
+          scale: 1.02,
           transition: { duration: 0.3 }
         }}
       >
