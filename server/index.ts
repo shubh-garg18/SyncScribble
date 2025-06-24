@@ -1,6 +1,6 @@
 import { createServer } from "http";
 
-import {} from "@/common/types/global";
+import {} from "@/client/src/middle/types/global";
 
 import express from "express";
 import next, { NextApiHandler } from "next";
